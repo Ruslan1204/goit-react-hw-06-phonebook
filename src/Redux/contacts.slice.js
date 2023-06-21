@@ -8,7 +8,7 @@ export const contactSlice = createSlice({
   reducers: {
     addContactsAction: {
       reducer(state, { payload }) {
-        state.push(payload);
+        state.contacts.push(payload);
       },
       prepare(name, number) {
         return {
@@ -34,15 +34,18 @@ export const {contactsFilterAction, contactsDeleteAction, addContactsAction } = 
 
 export const contactsReducer = contactSlice.reducer;
 
-// export const { addTask, deleteTask, toggleCompleted } = tasksSlice.actions;
-// export const tasksReducer = tasksSlice.reducer;
+// const mapName = contacts
+// .map(contact => {
+//   return contact.name;
+// })
+// .join('')
+// .includes(contact.name);
 
-// export const contactsReducer = createReducer(initState, builder => {
-//     builder
-//       .addCase(contactsFilterAction, (state, { payload }) => {
-//         state.filter = payload;
-//       })
-//       .addCase(contactsDeleteAction, (state, { payload }) => {
-//         state.contacts = state.contacts.filter(contact => contact.id !== payload);
-//       });
+
+// if (!mapName) {
+//   setContacts(prevState => {
+//     return [contact, ...prevState];
 //   });
+// } else {
+//   return alert(`${name} is already in contacts.`);
+// }

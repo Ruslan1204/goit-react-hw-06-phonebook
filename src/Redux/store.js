@@ -1,4 +1,4 @@
-// import { devToolsEnhancer } from '@redux-devtools/extension';
+
 import { initState } from './contacts.init-state';
 
 import { contactsReducer } from './contacts.slice';
@@ -17,7 +17,6 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-// const rootReducer = combineReducers({
 //   data: contactsReducer,
 // });
 
@@ -51,8 +50,10 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
+
 // export const store = configureStore({
-//     preloadedState: initState,
-//     devTools: true,
-//     reducer: contactsReducer,
+//     reducer: {
+//       tasks: tasksReducer,
+//       filters: filtersReducer,
+//     },
 //   });

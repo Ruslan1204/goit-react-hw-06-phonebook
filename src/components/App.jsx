@@ -1,10 +1,8 @@
-// import { useEffect } from 'react';
-// import { nanoid } from 'nanoid';
+
 import { ContactForm } from '../components/ContactForm/ContactForm';
 import { Filter } from '../components/Filter/Filter';
 import { ContactList } from '../components/ContactList/ContactList';
 import css from '../components/App.module.css';
-// import { localContacts } from './localContacts';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addContactsAction,
@@ -15,52 +13,30 @@ import {
 
 export const App = () => {
   const dispatch = useDispatch();
-  // const [contacts, setContacts] = useState(
-  //   JSON.parse(localStorage.getItem('contacts')) || localContacts
-  // );
-  // const [search, setFilter] = useState('');
+
   const filter = useSelector(state => state.filter);
   const contacts = useSelector(state => state.contacts);
 
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
-
   const handleDeleteContact = id => {
-    // dispatch({ type: contactsDeleteAction, payload: id });
     dispatch(contactsDeleteAction(id));
-
-    // setContacts(prevState => prevState.filter(contact => contact.id !== id));
   };
 
   const handleAddContacts = (name, number) => {
-
-    dispatch(addContactsAction(name, number));
-    // const contact = { id: nanoid(), name, number };
-    // const mapName = contacts
-    //   .map(contact => {
-    //     return contact.name;
-    //   })
-    //   .join('')
-    //   .includes(contact.name);
-    // if (!mapName) {
-    //   // const contacts = (state => {
-    //   //   return [contact, ...state];
-    //   // })
-    //   // setContacts(prevState => {
-    //   //   return [contact, ...prevState];
-    //   // });
-    // } else {
-    //   return alert(`${name} is already in contacts.`);
-    // }
+    const mapName = contacts.map(contact => {
+        return contact.name;
+      })
+      .join('')
+      .includes(name);
+    if (!mapName) {
+      dispatch(addContactsAction(name, number));
+    } else {
+      return alert(`${name} is already in contacts.`);
+    }
   };
 
   const changeFilter = evt => {
     const { value } = evt.target;
-    // dispatch({ type: contactsFilterAction, payload: value });
     dispatch(contactsFilterAction(value));
-
-    // setFilter(value);
   };
 
   const filterContacts = contacts.filter(contact => {
