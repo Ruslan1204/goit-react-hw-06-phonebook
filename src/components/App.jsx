@@ -9,7 +9,6 @@ import {
   contactsDeleteAction,
   contactsFilterAction,
 } from 'Redux/contacts.slice';
-// import { contactsFilterAction } from 'Redux/filter.slice';
 
 export const App = () => {
   const dispatch = useDispatch();
