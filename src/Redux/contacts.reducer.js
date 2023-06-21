@@ -1,8 +1,8 @@
-import { createReducer } from '@reduxjs/toolkit';
+// import { createReducer } from '@reduxjs/toolkit';
 // import { combineReducers } from 'redux';
 
-import { initState } from './contacts.init-state';
-import { contactsDeleteAction, contactsFilterAction } from './contacts.action';
+// import { initState } from './contacts.init-state';
+// import { contactsDeleteAction, contactsFilterAction } from './contacts.action';
 
 // export const contactsReducer = (state = initState, { type, payload }) => {
 //   switch (type) {
@@ -57,12 +57,12 @@ import { contactsDeleteAction, contactsFilterAction } from './contacts.action';
 //   contacts: contactReducer,
 // });
 
-export const contactsReducer = createReducer(initState, builder => {
-  builder
-    .addCase(contactsFilterAction, (state, { payload }) => {
-      state.filter = payload;
-    })
-    .addCase(contactsDeleteAction, (state, { payload }) => {
-      state.contacts = state.contacts.filter(contact => contact.id !== payload);
-    });
-});
+// export const contactsReducer = createReducer(initState, builder => {
+//   builder
+//     .addCase(contactsFilterAction, (state, { payload }) => {
+//       state.filter = payload;
+//     })
+//     .addCase(contactsDeleteAction, (state, { payload }) => {
+//       state.contacts = state.contacts.filter(contact => contact.id !== payload);
+//     });
+// });

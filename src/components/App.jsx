@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 // import { nanoid } from 'nanoid';
 import { ContactForm } from '../components/ContactForm/ContactForm';
 import { Filter } from '../components/Filter/Filter';
@@ -6,7 +6,12 @@ import { ContactList } from '../components/ContactList/ContactList';
 import css from '../components/App.module.css';
 // import { localContacts } from './localContacts';
 import { useDispatch, useSelector } from 'react-redux';
-import { contactsDeleteAction, contactsFilterAction } from 'Redux/contacts.action';
+import {
+  addContactsAction,
+  contactsDeleteAction,
+  contactsFilterAction,
+} from 'Redux/contacts.slice';
+// import { contactsFilterAction } from 'Redux/filter.slice';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -14,12 +19,12 @@ export const App = () => {
   //   JSON.parse(localStorage.getItem('contacts')) || localContacts
   // );
   // const [search, setFilter] = useState('');
-  const filter = useSelector(state => state.data.filter);
-  const contacts = useSelector(state => state.data.contacts);
+  const filter = useSelector(state => state.filter);
+  const contacts = useSelector(state => state.contacts);
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
   const handleDeleteContact = id => {
     // dispatch({ type: contactsDeleteAction, payload: id });
@@ -29,6 +34,8 @@ export const App = () => {
   };
 
   const handleAddContacts = (name, number) => {
+
+    dispatch(addContactsAction(name, number));
     // const contact = { id: nanoid(), name, number };
     // const mapName = contacts
     //   .map(contact => {
@@ -37,9 +44,12 @@ export const App = () => {
     //   .join('')
     //   .includes(contact.name);
     // if (!mapName) {
-    //   setContacts(prevState => {
-    //     return [contact, ...prevState];
-    //   });
+    //   // const contacts = (state => {
+    //   //   return [contact, ...state];
+    //   // })
+    //   // setContacts(prevState => {
+    //   //   return [contact, ...prevState];
+    //   // });
     // } else {
     //   return alert(`${name} is already in contacts.`);
     // }
@@ -63,7 +73,7 @@ export const App = () => {
       <ContactForm onAdd={handleAddContacts} />
 
       <h2>Contacts</h2>
-      <Filter  onChange={changeFilter} />
+      <Filter onChange={changeFilter} />
       <ContactList contacts={filterContacts} onDelete={handleDeleteContact} />
     </div>
   );

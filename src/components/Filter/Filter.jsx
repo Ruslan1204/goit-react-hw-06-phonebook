@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 export const Filter = ({ onChange }) => {
-  const filter = useSelector(state => state.data.filter);
+  const filter = useSelector(state => state.filter);
   return (
     <label>
       <p>Find contacts by name</p>
