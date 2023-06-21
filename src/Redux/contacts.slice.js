@@ -33,19 +33,3 @@ export const contactSlice = createSlice({
 export const {contactsFilterAction, contactsDeleteAction, addContactsAction } = contactSlice.actions;
 
 export const contactsReducer = contactSlice.reducer;
-
-// const mapName = contacts
-// .map(contact => {
-//   return contact.name;
-// })
-// .join('')
-// .includes(contact.name);
-
-
-// if (!mapName) {
-//   setContacts(prevState => {
-//     return [contact, ...prevState];
-//   });
-// } else {
-//   return alert(`${name} is already in contacts.`);
-// }
