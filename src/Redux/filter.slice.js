@@ -2,12 +2,12 @@
 // import { initState } from './contacts.init-state';
 
 // export const filterSlice = createSlice({
-//     name: 'filters',
+//     name: 'filter',
 //     initialState: initState,
 //   reducers: {
-//     contactsFilterAction: (state, { payload }) => {
-//       state.filter = payload;
-//     },
+//     contactsFilterAction(state, { payload }) {
+//         state.filter = payload;
+//       },
 //   },
 // });
 

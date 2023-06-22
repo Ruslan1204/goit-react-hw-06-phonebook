@@ -1,58 +1,58 @@
-
 import { ContactForm } from '../components/ContactForm/ContactForm';
 import { Filter } from '../components/Filter/Filter';
 import { ContactList } from '../components/ContactList/ContactList';
 import css from '../components/App.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  addContactsAction,
-  contactsDeleteAction,
-  contactsFilterAction,
-} from 'Redux/contacts.slice';
+// import { useDispatch} from 'react-redux';
+import // addContactsAction,
+// contactsDeleteAction,
+// contactsFilterAction,
+'Redux/contacts.slice';
+// import { contactsFilterAction } from 'Redux/filter.slice';
 
 export const App = () => {
-  const dispatch = useDispatch();
-
-  const filter = useSelector(state => state.filter);
-  const contacts = useSelector(state => state.contacts);
-
-  const handleDeleteContact = id => {
-    dispatch(contactsDeleteAction(id));
-  };
-
-  const handleAddContacts = (name, number) => {
-    const mapName = contacts.map(contact => {
-        return contact.name;
-      })
-      .join('')
-      .includes(name);
-    if (!mapName) {
-      dispatch(addContactsAction(name, number));
-    } else {
-      return alert(`${name} is already in contacts.`);
-    }
-  };
-
-  const changeFilter = evt => {
-    const { value } = evt.target;
-    dispatch(contactsFilterAction(value));
-  };
-
-  const filterContacts = contacts.filter(contact => {
-    return contact.name.toLowerCase().includes(filter.toLowerCase());
-  });
-
   return (
     <div className={css.container}>
       <h1>Phonebook</h1>
-      <ContactForm onAdd={handleAddContacts} />
+      <ContactForm />
 
       <h2>Contacts</h2>
-      <Filter onChange={changeFilter} />
-      <ContactList contacts={filterContacts} onDelete={handleDeleteContact} />
+      <Filter />
+
+      <ContactList />
     </div>
   );
 };
+
+// {/* onAdd={handleAddContacts} */}
+// {/* onChange={changeFilter}  */}
+// {/* onDelete={handleDeleteContact}  */}
+
+// const dispatch = useDispatch();
+
+// const filter = useSelector(state => state.filter);
+// const contacts = useSelector(state => state.contacts);
+
+// const handleDeleteContact = id => {
+//   dispatch(contactsDeleteAction(id));
+// };
+
+// const handleAddContacts = (name, number) => {
+//   const mapName = contacts.map(contact => {
+//       return contact.name;
+//     })
+//     .join('')
+//     .includes(name);
+//   if (!mapName) {
+//     dispatch(addContactsAction(name, number));
+//   } else {
+//     return alert(`${name} is already in contacts.`);
+//   }
+// };
+
+// const changeFilter = evt => {
+//   const { value } = evt.target;
+//   dispatch(contactsFilterAction(value));
+// };
 
 // export class App extends Component {
 //   state = {

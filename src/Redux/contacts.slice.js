@@ -30,6 +30,8 @@ export const contactSlice = createSlice({
   },
 });
 
-export const {contactsFilterAction, contactsDeleteAction, addContactsAction } = contactSlice.actions;
+export const {
+  contactsFilterAction, 
+  contactsDeleteAction, addContactsAction } = contactSlice.actions;
 
 export const contactsReducer = contactSlice.reducer;

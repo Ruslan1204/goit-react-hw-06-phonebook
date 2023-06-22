@@ -1,4 +1,3 @@
-
 import { initState } from './contacts.init-state';
 
 import { contactsReducer } from './contacts.slice';
@@ -17,6 +16,8 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+
+// import { filterReducer } from './filter.slice';
 
 //   data: contactsReducer,
 // });
@@ -46,14 +47,12 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
-
 // export const store = configureStore({
 //     reducer: {
 //       tasks: tasksReducer,
 //       filters: filtersReducer,
 //     },
 //   });
-
 
 // const rootReducer = combineReducers({
 //   filter: contactsReducer,
